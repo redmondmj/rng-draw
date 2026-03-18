@@ -1,10 +1,7 @@
 # St. Paddy's Day RNG Draw App
 
-## Source
-Local Repository: `C:\Users\redmo\OneDrive\Documents\GitRepos\number-draw`
-
 ## Overview
-A festive St. Patrick's Day themed Random Number Generator (RNG) application designed for prize draws. It supports loading ticket data from CSV and Excel files, specifically optimized for the "U11A Bearcats Pot O' Gold" fundraiser. The app handles multiple $50 draws and a 50/50 grand prize draw, ensuring all tickets are eligible for the final big prize.
+A festive St. Patrick's Day themed Random Number Generator (RNG) application designed for prize draws. It supports loading ticket data from CSV and Excel files. The app handles multiple $50 draws and a 50/50 grand prize draw, ensuring all tickets are eligible for the final big prize.
 
 ## Prerequisites
 - **Node.js:** v18.0.0 or higher
@@ -14,7 +11,7 @@ A festive St. Patrick's Day themed Random Number Generator (RNG) application des
 1. Clone or download the repository.
 2. Navigate to the project directory:
    ```powershell
-   cd number-draw
+   cd rng-draw
    ```
 3. Install dependencies:
    ```powershell

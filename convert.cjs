@@ -2,10 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
 
-const assetDir = 'C:\\Users\\redmo\\OneDrive\\Documents\\GitRepos\\number-draw\\src\\assets';
+// Using relative paths for portability
+const assetDir = path.join(__dirname, 'src', 'assets');
 const excelFile = "U11A Bearcats Pot O' Gold 50_50_3-17-2026(1).xlsx";
 const fullPath = path.join(assetDir, excelFile);
-const outputPath = 'C:\\Users\\redmo\\OneDrive\\Documents\\GitRepos\\number-draw\\public\\tickets.csv';
+const outputPath = path.join(__dirname, 'public', 'tickets.csv');
 
 if (fs.existsSync(fullPath)) {
   const workbook = XLSX.readFile(fullPath);
@@ -31,5 +32,5 @@ if (fs.existsSync(fullPath)) {
   fs.writeFileSync(outputPath, csv);
   console.log(`Sanitized Excel and saved to ${outputPath}`);
 } else {
-  console.error(`File not found at ${fullPath}`);
+  console.error(`File not found at ${fullPath}. Please place your Excel file in src/assets/`);
 }

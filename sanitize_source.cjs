@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
 
-const assetDir = 'C:\\Users\\redmo\\OneDrive\\Documents\\GitRepos\\number-draw\\src\\assets';
+// Using relative paths for portability
+const assetDir = path.join(__dirname, 'src', 'assets');
 const excelFile = "U11A Bearcats Pot O' Gold 50_50_3-17-2026(1).xlsx";
 const fullPath = path.join(assetDir, excelFile);
 
@@ -19,7 +20,6 @@ if (fs.existsSync(fullPath)) {
     // Explicitly clear sensitive fields
     delete newRow["Buyer email"];
     delete newRow["Ticket notes"];
-    // Add placeholders if needed or just leave them out
     return newRow;
   });
   
@@ -33,8 +33,9 @@ if (fs.existsSync(fullPath)) {
   
   // Also refresh the CSV
   const csv = XLSX.utils.sheet_to_csv(newSheet);
-  fs.writeFileSync('C:\\Users\\redmo\\OneDrive\\Documents\\GitRepos\\number-draw\\public\\tickets.csv', csv);
-  console.log(`Refreshed sanitized CSV.`);
+  const csvPath = path.join(__dirname, 'public', 'tickets.csv');
+  fs.writeFileSync(csvPath, csv);
+  console.log(`Refreshed sanitized CSV at ${csvPath}`);
 } else {
-  console.error(`File not found at ${fullPath}`);
+  console.error(`File not found at ${fullPath}. Please place your Excel file in src/assets/`);
 }
