@@ -1,0 +1,212 @@
+:root {
+  --primary-green: #009a44;
+  --dark-green: #006b2e;
+  --gold: #ffcc00;
+  --white: #ffffff;
+  --light-green: #e8f5e9;
+  --error: #d32f2f;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark-green);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 154, 68, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(0, 154, 68, 0.1) 0%, transparent 20%);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: var(--gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.upload-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px dashed var(--gold);
+  margin-bottom: 2rem;
+  transition: transform 0.2s;
+}
+
+.upload-section:hover {
+  transform: scale(1.01);
+}
+
+.file-input {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--gold);
+  color: var(--dark-green);
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.stats {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.draw-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-draw {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.btn-grand {
+  background-color: var(--gold);
+  color: var(--dark-green);
+  font-size: 1.3rem;
+  padding: 20px 40px;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.drawing-display {
+  background: white;
+  color: var(--dark-green);
+  padding: 3rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.spinning-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: bounce 0.1s infinite;
+}
+
+.winner-card {
+  animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.winner-prize {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.winner-name {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.winner-seller {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.winners-list {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.winners-list h2 {
+  text-align: center;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1rem;
+}
+
+.winner-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.winner-row:last-child {
+  border-bottom: none;
+}
+
+.prize-col { font-weight: bold; color: var(--gold); }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.clover {
+  position: fixed;
+  font-size: 2rem;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+  animation: float-rotate 20s linear infinite;
+}
+
+@keyframes float-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
